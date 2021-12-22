@@ -1,4 +1,52 @@
-<table mat-table [dataSource]="dataSourceChild" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container [matColumnDef]="column.col" *ngFor="let column of colHeaderChild">
+        <th mat-header-cell *matHeaderCellDef [ngClass]="column.color">{{column.col | titlecase}}</th>
+        <ng-container>
+            <td mat-cell *matCellDef="let element" class="toggle" [ngClass]="column.color">
+                <ng-container *ngIf="column.type=='text'">
+                    <span>{{element[column.col]}}</span>
+                </ng-container>
+
+                <ng-container *ngIf="column.type=='icon'">
+                    <mat-icon *ngFor="let icon of column.icon">{{icon}}</mat-icon>
+                </ng-container>
+
+                <ng-container *ngIf="column.type=='input'">
+                    <input matInput placeholder="Enter text">
+                </ng-container>
+            </td>
+        </ng-container>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="dispColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: dispColumns;"></tr>
+</table>
+
+<mat-paginator *ngIf="dataSource.data.length > 10 && dataSource.filteredData.length > 0"
+    [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons #paginator>
+</mat-paginator>
+
+<ng-container *ngIf="dataSource.data.length === 0">
+    <h2> No Records Found!</h2>
+</ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <table mat-table [dataSource]="dataSourceChild" class="mat-elevation-z8">
 
     <ng-container [matColumnDef]="column.col" *ngFor="let column of colHeaderChild">
         <th mat-header-cell *matHeaderCellDef >{{column.col}}</th>
@@ -15,38 +63,7 @@
     <tr mat-header-row *matHeaderRowDef="dispColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: dispColumns;" ></tr>
 
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</table> -->
 
 
 

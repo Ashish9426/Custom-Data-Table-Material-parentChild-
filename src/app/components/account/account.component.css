@@ -1,9 +1,20 @@
 table {
-    width: 100%;
-  }
+  width: 100%;
+  
+}
 
-  .mat-header-cell{
-    background-color: black;
-    color: white;
-    font-size: large;
-  }
+.mat-header-cell{
+  font-size: large;
+  background-color: rgb(28, 2, 88);
+  color: white;
+  text-align: center;
+}
+.mat-cell{
+  background-color: azure;
+  text-align: center;
+}
+
+h2{
+  color: red;
+  text-align: center;
+}
